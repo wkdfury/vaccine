@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+     <title>Get Ready - Coming Soon Template</title>
+
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="team" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+     <link rel="stylesheet" href="{% static 'assets/css/vegas.min.css' %}">
+     <link rel="stylesheet" href="{% static 'assets/css/font-awesome.min.css' %}">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="{% static 'assets/css/templatemo-style.css' %}">
+</head>
+<body>
+          <div class="col-md-12 col-sm-12">
+          <ul class="social-icon">
+              <li><h4 style="color:white;">Hey, {{ user.username }}</h4></li>
+             <li class="line"></li>
+               <li><a href="{% url 'vaccine_app:index' %}" class="fa fa-home"></a></li>
+              <li class="line"></li>
+              <li><a href="{% url 'vaccine_app:index' %}">Logout</a> </li>
+
+            </ul>
+
+
+     <!-- HOME -->
+     <section id="home">
+        <div class="overlay"></div>
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-12 col-sm-12">
+                         <div class="home-info">
+                              <h1><u>TOKEN</u></h1><br><br>
+
+                                {% for message in messages %}
+                             <ul>
+                                 <li><h1>{{message}}</h1></li>
+                                 <li><h1> Name:                {{ name }}</h1></li>
+                                <li><h1> Token number :<strong>{{ id }}</strong></h1></li>
+                                <li><h1> Appointment Time:     {{ time }}</h1></li>
+                                <li><h1>Vaccine centre:        {{ place }}</h1></li>
+                            </ul>
+                                {% endfor %}
+
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+     <!-- SCRIPTS -->
+     <script src="{% static 'assets/js/jquery.js' %}"></script>
+     <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+     <script src="{% static 'assets/js/vegas.min.js' %}"></script>
+     <script src="{% static 'assets/js/countdown.js' %}"></script>
+     <script src="{% static 'assets/js/init.js' %}"></script>
+     <script src="{% static 'assets/js/custom.js' %}"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,383 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>OnePage Bootstrap Template - Index</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="{% static 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+<!--  <link href="{% static 'https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css' %}" rel="stylesheet">-->
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: OnePage - v4.5.0
+  * Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  <script>
+var stateObject = {
+  "Kerala": {
+    "Thiruvananthapuram": ["Medical-collage", "Kannanmmula", "Pothencode", "Karamana"],
+    "Kollam": ["Kottiyam", "Parippalli", "Karunagappalli", "Mylapore"],
+    "Pathanamthitta": ["Manjinikkara", "Kaipattoor", "Thiruvalla", "Kadammanitta"],
+    "Alappuzha": ["Vadackal", "Kuthirapanthy", "Kuppappuram", "Chetticad"],
+    "Kottayam": ["Kumarakam", "Perumbaikkad", "Puthuppally", "Mannarcad"],
+    "Idukki": ["Munnar", "Malankara", "Thattekkad", "Eravikulam"],
+
+    "Ernakulam": ["Mattancherry", "Avanavanchery", "Edappally", "Perumbavoor"],
+
+    "Thrissur": ["Avinissery", "Athirappilly", "Chavakkad", "Vilangankunnu"],
+    "Palakkad": ["Malambuzha", "Parambikulam", "Nelliyapathy", "Kanjirappuzha"],
+    "Malappuram": ["Nilambur", "Ponnani", "Kodikkuthimala", "Kadalundi"],
+    "Kozhikkod": ["Mannanchira", "Neeleswaram", "Payyannur", "Thikkodi"],
+    "Wayanad": ["Chembra", "Thirunelli", "Lekkidi", "Soochippara"],
+    "Kannur": ["Parassinikkadav", "Payyambalam", "Palakkayam", "Arakkal"],
+    "Kasargod": ["Ranipuram", "Malom", "Thaikkadappuram", "Parappa"],
+
+  },
+
+}
+window.onload = function() {
+  var stateSel = document.getElementById("state");
+  var districtSel = document.getElementById("district");
+  var placeSel = document.getElementById("place");
+  for (var x in stateObject) {
+    stateSel.options[stateSel.options.length] = new Option(x, x);
+  }
+  stateSel.onchange = function() {
+    //empty Places- and districts- dropdowns
+    districtSel.length = 1;
+    placeSel.length = 1;
+    //display correct values
+    for (var y in stateObject[this.value]) {
+      districtSel.options[districtSel.options.length] = new Option(y, y);
+    }
+  }
+  districtSel.onchange = function() {
+    //empty Chapters dropdown
+    placeSel.length = 1;
+    //display correct values
+    var z = stateObject[stateSel.value][this.value];
+    for (var i = 0; i < z.length; i++) {
+      placeSel.options[placeSel.options.length] = new Option(z[i], z[i]);
+    }
+  }
+}
+</script>
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="{% url 'vaccine_app:index' %}">Get Vaccinated</a></h1>
+      <!-- Uncomment below if you prefer to use an image logo -->
+       <a href="index.html" class="logo"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+      <nav id="navbar" class="navbar">
+        <ul>
+          {% if user.is_authenticated %}
+          <li><h4 align="center">Welcome, {{ user.username }}</h4></li>
+          {% endif %}
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+<!--          <li><a class="nav-link scrollto" href="#about">About</a></li>-->
+<!--          <li><a class="nav-link scrollto" href="#services">Services</a></li>-->
+<!--          <li><a class="nav-link scrollto o" href="#portfolio">Portfolio</a></li>-->
+<!--          <li><a class="nav-link scrollto" href="#team">Team</a></li>-->
+<!--          <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>-->
+          <li class="dropdown"><a href="#"><span>Checkout the Places</span> <i class="bi bi-chevron-down"></i></a>
+            <ul>
+              <li><a href="https://en.wikipedia.org/wiki/Thiruvananthapuram">Thiruvananthapuram</a></li>
+<!--              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>-->
+<!--                <ul>-->
+<!--                  <li><a href="#">Deep Drop hihi 1</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 2</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 3</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 4</a></li>-->
+<!--                  <li><a href="#">Deep Drop Down 5</a></li>-->
+<!--                </ul>-->
+              </li>
+              <li><a href="https://en.wikipedia.org/wiki/Kollam">Kollam</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Pathanamthitta">Pathanamthitta</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Alappuzha">Alapuzha</a></li>
+               <li><a href="https://en.wikipedia.org/wiki/Kottayam">Kottayam</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Idukki_district">Idukki</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Ernakulam">Ernakulam</a></li>
+               <li><a href="https://en.wikipedia.org/wiki/Thrissur">Thrissur</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Palakkad">Palakkad</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Malappuram">Malappuram</a></li>
+               <li><a href="https://en.wikipedia.org/wiki/Kozhikode">Kozhikode</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Wayanad_district">Wayanad</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Kannur">Kannur</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Kasaragod">Kasargod</a></li>
+
+            </ul>
+          </li>
+<!--          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>-->
+          {% if user.is_authenticated %}
+          <li><a class="getstarted scrollto" href="{% url 'vaccine_app:logout' %}">Logout</a></li>
+          {% else %}
+          <li><a class="getstarted scrollto" href="{% url 'vaccine_app:login' %}">Login</a></li>
+        </ul>
+        {% endif %}
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
+    <div class="container position-relative" data-aos="fade-up" data-aos-delay="100">
+      <div class="row justify-content-center">
+        {% if user.is_authenticated %}
+        <div class="col-xl-7 col-lg-9 text-center">
+
+          <h1>Click below to register for Vaccine</h1>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="#formss"  class="btn-get-started scrollto">Book your Slot</a>
+      </div>
+      {% else %}
+      <div class="col-xl-7 col-lg-9 text-center">
+          <h1>Register Now and Get Vaccinated</h1>
+          <h2>Lets Make India Safe Again </h2>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="{% url 'vaccine_app:register' %}" class="btn-get-started scrollto">Register Now</a>
+      </div>
+    {% endif %}
+
+      <div class="row icon-boxes">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="200">
+          <div class="icon-box">
+            <div class="icon"><i class="ri-stack-line"></i></div>
+            <h4 class="title"><a href="">Covishield</a></h4>
+            <p class="description">Based on data provided by the manufacturer, the Astrazeneca-Oxford vaccine, or AZD1222, has shown to be 63% effective in an ongoing, large-scale clinical trial.
+
+A widely used COVID-19 vaccine that's at least 50% effective could help control the pandemic</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="300">
+          <div class="icon-box">
+            <div class="icon"><i class="ri-palette-line"></i></div>
+            <h4 class="title"><a href="">Covaxine</a></h4>
+            <p class="description">Covaxin is India's first indigenous COVID-19 vaccine developed by Bharat Biotech in collaboration with the Indian Council of Medical Research (ICMR)</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="400">
+          <div class="icon-box">
+            <div class="icon"><i class="ri-command-line"></i></div>
+            <h4 class="title"><a href="">Pfizer</a></h4>
+            <p class="description">Pfizer-BioNTech (COMIRNATY) received U.S. Food and Drug Administration (FDA) approval on August 23, 2021, for individuals 16 years of age and older.Now that the FDA-authorized Pfizer-BioNTech COVID-19 vaccine has been approved by the FDA for individuals 16 years of age and older.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0" data-aos="zoom-in" data-aos-delay="500">
+          <div class="icon-box">
+            <div class="icon"><i class="ri-fingerprint-line"></i></div>
+            <h4 class="title"><a href="">Sputnik</a></h4>
+            <p class="description">Russia’s vaccine is in use in nearly 70 nations, but its adoption has been slowed by controversies and questions over rare side effects, and it has yet to garner World Health Organization approval.</p>
+          </div>
+        </div>
+
+      </div>
+
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="formss" class="about">
+      <div class="container" data-aos="fade-up">
+        {% if user.is_authenticated %}
+        <div class="section-title">
+          <h2>Do It Now</h2>
+          <p>India is counting down to one billion doses </p>
+<br>
+
+
+
+          <form name="form1" id="form1" action="{% url 'token_app:add' %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+
+            <label for="name">Name: </label>
+            <input type="text" name="name" required><br><br>
+             <label for="address">Address: </label>
+            <input type="text" name="address" required><br><br>
+            <label for="number">Mobile Number: </label>
+            <input type="number" name="number" required><br><br>
+             <label for="Uid">Aadhar Number: </label>
+            <input type="number" name="uid" required><br><br>
+            <label for="vaccine">Choose the Vaccine: </label>
+            <select id="vaccine" name="vaccine" required>
+              <option value="covishield">Covishield</option>
+              <option value="covaxin">Covaxin</option>
+              <option value="sputnik">Sputnik</option>
+              <option value="pfizer">Pfizer</option>
+            </select><br><br>
+            <label for="Dose"> Choose you Dose: </label>
+            <select id="Dose" name="dose" required>
+              <option value="First dose">First Dose</option>
+              <option value="Second dose">Second Dose</option>
+              <option value="Booster">Booster</option>
+            </select><br><br>
+State: <select name="state" id="state" required>
+    <option value="" selected="selected">State</option>
+  </select>
+  <br><br>
+District: <select name="district" id="district" required>
+    <option value="" selected="selected">District</option>
+  </select>
+  <br><br>
+Place: <select name="place" id="place" required>
+    <option value="" selected="selected">Nearest vaccination centre</option>
+  </select>
+  <br><br>
+  <input type="submit" value="Submit">
+</form><br>
+          {% for message in messages %}
+          <h3> {{message}} </h3>
+          {% endfor %}
+        </div>
+        {% else %}
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <p>
+              Covid-19 vaccines have been tested by multiple drug administration authorities in the world. They are proven to be effective in reducing your probability of contracting COVID-19. Once you are vaccinated, your body is much better prepared to shield off more viruses by making your immune system stronger.
+              While COVID-19 vaccine supplies are limited, health workers at high risk of exposure and older people should be prioritized for vaccination.
+            </p>
+
+       </div>
+        <div class="col-lg-6 pt-4 pt-lg-0">
+           <p>
+          Vaccines are designed to give you immunity without the dangers of getting the disease. It’s common to experience some mild-to-moderate side effects when receiving vaccinations. This is because your immune system is instructing your body to react in certain ways: it increases blood flow so more immune cells can circulate, and it raises your body temperature in order to kill the virus.</p>
+      <a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/covid-19-vaccines/advice" class="btn-learn-more">Learn More</a>
+       </div>
+      </div>
+
+      </div>{% endif %}
+    </section>
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>OnePage</h3>
+            <p>
+              A108 Street <br>
+              TVM, Kerala 535022<br>
+              India <br><br>
+              <strong>Phone:</strong> +91 5589 55488 55<br>
+              <strong>Email:</strong> covi@vaxine.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Masks</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Sanitizers</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Social distancing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Covid Vaccination</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Polio Vaccination</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Drug Intervention</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Distributions</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Join Our Venture</h4>
+            <p>We have the most efficient and effective team. Those who wish to join us feel free to drop an email or visit us at the given address..</p>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>wkd</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/ -->
+          Designed by <a href="">WKD</a>
+        </div>
+      </div>
+<!--      <div class="social-links text-center text-md-right pt-3 pt-md-0">-->
+<!--        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>-->
+<!--        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>-->
+<!--        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>-->
+<!--        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>-->
+<!--        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>-->
+<!--      </div>-->
+    </div>
+  </footer><!-- End Footer -->
+
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/purecounter/purecounter.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
